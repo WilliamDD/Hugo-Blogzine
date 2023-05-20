@@ -1,6 +1,0 @@
-[submodule "static/vendor/bootstrap-icons"]
-	path = static/vendor/bootstrap-icons
-	url = https://github.com/twbs/icons.git
-[submodule "static/vendor/bootstrap"]
-	path = static/vendor/bootstrap
-	url = https://github.com/twbs/bootstrap.git
