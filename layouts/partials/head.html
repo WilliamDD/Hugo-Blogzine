@@ -10,3 +10,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
+
+{{ if .IsHome }}
+<meta name="description" content="{{ .Site.Params.Description }}">
+<meta name="author" content="{{ .Site.Params.Author }}">
+<meta property="og:title" content="{{ .Site.Title }}">
+<meta property="og:url" content="{{ .Page.Permalink }}">
+<meta property="og:description" content="{{ .Site.Params.Description }}">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ .Site.Title }}">
+<meta name="twitter:url" content="{{ .Page.Permalink }}">
+<meta name="twitter:description" content="{{ .Site.Params.Description }}">
+
+{{ else }}
+<meta name="description" content="{{ .Page.Summary }}">
+<meta name="author" content="{{ .Site.Params.Author }}">
+<meta property="og:title" content="{{ .Page.Title }}.">
+<meta property="og:url" content="{{ .Page.Permalink }}">
+<meta property="og:description" content="{{ .Page.Summary }}">
+<meta property="og:type" content="article" />
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=".Page.Title ">
+<meta name="twitter:url" content="{{ .Page.Permalink }}">
+<meta name="twitter:description" content="{{ .Page.Summary }}">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+{{ end }}
