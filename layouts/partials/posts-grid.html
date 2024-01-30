@@ -2,7 +2,7 @@
     {{ range first 10 (where .Site.RegularPages "Type" "posts") }}
     <div class="col">
         <div class="card h-100">
-            <img src="{{ .RelPermalink }}{{ .Params.Image }}" class="card-img-top" alt="...">
+            <img loading="lazy" src="{{ .RelPermalink }}{{ .Params.Image }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ .Title }}</h5>
                 <p class="card-text">{{ .Summary }}</p>
