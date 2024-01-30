@@ -1,15 +1,17 @@
-<blockquote>
-    <p>{{ .Inner | markdownify }}</p>
+<figure class="text-end">
+    <blockquote class="blockquote fs-6">
+      <p><i class="bi bi-quote"></i>{{ .Inner | markdownify }}<i class="bi bi-quote"></i></p>
+    </blockquote>
     {{- if or (.Get "author") (.Get "source") -}}
-    <span class="cite"><span>― </span>
+    <figcaption class="blockquote-footer">
         {{- if .Get "author" -}}
-        <span>
+        <cite>
             {{- .Get "author" -}}{{- if .Get "source" -}}, {{ end -}}
         </span>
         {{- end -}}
         {{- with .Get "url" -}}<a href="{{ . }}">{{- end -}}
             <cite>{{ .Get "source" }}</cite>
         {{- if .Get "url" -}}</a>{{- end -}}
-    </span>
+    </figcaption>
     {{- end -}}
-</blockquote>
+  </figure>

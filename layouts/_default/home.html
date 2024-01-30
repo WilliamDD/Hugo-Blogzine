@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+{{ $dateHuman := .Date | time.Format ":date_long" }}
+<section class="pt-4">
+  <div class="container">
+    {{ partial "posts-carousel.html" . }}
+  </div>
+</section>
+<section class="pt-4">
+  <div class="container">
+    {{ partial "posts-image.html" (dict "menuID" "main1" "page" .) }}
+  </div>
+</section>
+<section class="pt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-9">
+        {{ partial "posts-grid.html" . }}
+      </div>
+      <div class="col-3">
+        {{ partial "sidebar.html" . }}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pt-4">
+  <div class="container">
+    {{ partial "posts-tabs.html" (dict "menuID" "main1" "page" .) }}
+  </div>
+</section>
+{{ end }}

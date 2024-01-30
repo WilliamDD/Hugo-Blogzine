@@ -1,0 +1,50 @@
+body {
+    font-family: 'rubik', sans-serif;
+    font-size: 14px;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    height: 500px;
+    overflow: hidden;
+  }
+
+.btn-link {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+    text-decoration: none;
+}
+
+.btn-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.btn-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.bg-category {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.text-category {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-primary-rgb),var(--bs-text-opacity))!important;
+}
+
+.bg-opacity-15 {
+    --bs-bg-opacity: 0.15;
+}

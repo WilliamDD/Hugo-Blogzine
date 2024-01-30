@@ -1,1 +1,7 @@
-# Hugo-Blogzine
+# Theme Name
+
+## Features
+
+## Installation
+
+## Configuration

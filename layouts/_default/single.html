@@ -1,3 +1,42 @@
 {{ define "main" }}
 
+{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+{{ $dateHuman := .Date | time.Format ":date_long" }}
+<section class="pt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="border p-5 text-center rounded-3"
+          style="background-image: url('{{ .RelPermalink }}{{ .Params.Image }}');background-size:cover;background-position:center;">
+          <div class="my-5">
+            {{ range .Params.categories }}
+            <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="badge text-bg-danger mb-2"><i
+                class="fas fa-circle me-2 small fw-bold"></i>{{ . }} </a>
+            {{ end }}
+            <h1 class="text-white">{{ .Title }}</h1>
+            <nav class="d-flex justify-content-center" aria-label="breadcrumb">
+              <ul class="list-group list-group-horizontal border-0">
+                <li class="list-group-item bg-transparent border-0 text-white">by&nbsp;{{ .Site.Params.Author }}</li>
+                <li class="list-group-item bg-transparent border-0 text-white">{{ .PublishDate.Format "January 2, 2006" }}</li>
+                <li class="list-group-item bg-transparent border-0 text-white">{{ .ReadingTime }} minute read</li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="pt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-9">
+        {{ .Content }}
+      </div>
+      <div class="col-3">
+        {{ partial "sidebar.html" . }}
+      </div>
+    </div>
+  </div>
+</section>
 {{ end }}
