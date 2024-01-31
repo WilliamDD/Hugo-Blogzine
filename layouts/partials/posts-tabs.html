@@ -1,18 +1,16 @@
+{{ $firstTab := "active" }}
+{{ $firstAria := "true" }}
 <div class="card">
     <div class="card-header p-0 border-bottom-0 bg-white">
         <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+            {{- range $taxonomy := .Site.Taxonomies.categories -}} 
             <li class="nav-item" role="presentation">
-                <a class="nav-link active  border-start-0" id="ex1-tab-1" data-bs-toggle="tab" href="#ex1-tabs-1"
-                    role="tab" aria-controls="ex1-tabs-1" aria-selected="true">Tab 1</a>
+                <a class="nav-link {{ $firstTab }} border-start-0" id="tab-{{ .Title }}" data-bs-toggle="tab" href="#tabs-{{ .Title }}"
+                    role="tab" aria-controls="tabs-{{ .Title }}" aria-selected="{{ $firstAria }}">{{ $taxonomy.Name }}</a>
             </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="ex1-tab-2" data-bs-toggle="tab" href="#ex1-tabs-2" role="tab"
-                    aria-controls="ex1-tabs-2" aria-selected="false">Tab 2</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="ex1-tab-3" data-bs-toggle="tab" href="#ex1-tabs-3" role="tab"
-                    aria-controls="ex1-tabs-3" aria-selected="false">Tab 3</a>
-            </li>
+            {{ $firstTab = "" }}
+            {{ $firstTab = "false" }}
+            {{ end }}
         </ul>
     </div>
     <div class="card-body">

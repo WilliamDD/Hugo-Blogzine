@@ -4,12 +4,7 @@
 {{ $dateHuman := .Date | time.Format ":date_long" }}
 <section class="pt-4">
   <div class="container">
-    {{ partial "posts-carousel.html" . }}
-  </div>
-</section>
-<section class="pt-4">
-  <div class="container">
-    {{ partial "posts-image.html" (dict "menuID" "main1" "page" .) }}
+    {{ partial "posts-carousel.html" (dict "tags" (slice "featured") "pages" .Site.RegularPages) }}
   </div>
 </section>
 <section class="pt-4">
@@ -24,9 +19,9 @@
     </div>
   </div>
 </section>
-<section class="pt-4">
+{{/*  <section class="pt-4">
   <div class="container">
     {{ partial "posts-tabs.html" (dict "menuID" "main1" "page" .) }}
   </div>
-</section>
+</section>  */}}
 {{ end }}

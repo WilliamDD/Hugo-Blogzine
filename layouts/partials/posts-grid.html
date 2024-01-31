@@ -5,7 +5,8 @@
             <img loading="lazy" src="{{ .RelPermalink }}{{ .Params.Image }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ .Title }}</h5>
-                <p class="card-text">{{ .Summary }}</p>
+                <p class="card-text mb-5">{{ .Summary }}</p>
+                <a href="{{ .RelPermalink }}" class="btn btn-outline-primary btn-sm" style="position: absolute;bottom:1rem;">Read more</a>
             </div>
         </div>
     </div>
