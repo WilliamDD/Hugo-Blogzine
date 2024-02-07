@@ -8,7 +8,7 @@
 {{ $firstCard := "active" }}
 {{ $ariaCurrentIndicator := "true" }}
 {{ $slideToIndicator := 0 }}
-<div id="carouselExampleCaptions" class="carousel slide">
+<div id="carouselExampleCaptions" class="carousel slide shadow">
     <div class="carousel-indicators">
         {{ range first 4 $p }}
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $slideToIndicator }}" class="{{ $firstIndicator }}" aria-current="{{ $ariaCurrentIndicator}}" aria-label="{{ .Title }}"></button>
@@ -20,7 +20,7 @@
     <div class="carousel-inner">
         {{ range first 4 $p }}
         <div class="carousel-item {{ $firstCard }}">
-            <img loading="lazy" src="{{ .RelPermalink }}{{ .Params.Image }}" class="d-block w-100" alt="...">
+            <img loading="lazy" src="{{ .RelPermalink }}{{ .Params.Image }}" class="d-block w-100 rounded" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 {{ range .Params.categories }}
                     <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="badge text-bg-danger mb-2"><i

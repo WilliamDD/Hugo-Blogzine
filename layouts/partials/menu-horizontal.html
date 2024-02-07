@@ -24,7 +24,7 @@
           {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
         {{- end }}
         <li class="nav-item">
-          <a class="nav-link link-body-emphasis px-2"
+          <a class="nav-link text-light px-2"
             {{- range $k, $v := $attrs }}
               {{- with $v }}
                 {{- printf " %s=%q" $k $v | safeHTMLAttr }}

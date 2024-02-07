@@ -13,7 +13,7 @@
 <div class="mb-3">
    <h3 class="h5"><span class="text-capitalize">{{ $key }}</span></h3>
       {{ range first 5 $value.ByCount }}
-      <div class="d-flex justify-content-between align-items-center bg-category bg-category-{{ .Name }} bg-opacity-15 rounded p-2 position-relative my-2">
+      <div class="d-flex justify-content-between align-items-center bg-category bg-category-{{ .Name }} bg-opacity-15 rounded shadow-sm p-2 position-relative my-2">
          <h6 class="m-0 text-category text-category-{{ .Name }}"  style="text-shadow: 1px 1px 2px white;">{{ .Name }}</h6>
          <a href="{{ $.Site.BaseURL}}{{ $key }}/{{ (replace .Name "#" "%23" ) | urlize }}/" >
             <span class="badge bg-category bg-category-{{ .Name }} text-light stretched-link">
@@ -29,7 +29,7 @@
    <h3 class="h5 widget-title"><span>Latest Article</span></h3>
    <!-- post-item -->
    {{ range first 5 (where .Site.RegularPages "Type" "posts") }}
-   <div class="card mb-3 border-0">
+   <div class="card mb-3 border-0 shadow-sm">
       <div class="row g-3">
          <div class="col-4">
             <img class="rounded ratio ratio-4x3" src="{{ .RelPermalink }}{{ .Params.Image }}" alt="{{ .Title }}">
