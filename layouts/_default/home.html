@@ -9,19 +9,12 @@
 </section>
 <section class="pt-4">
   <div class="container">
-    <div class="row">
-      <div class="col-9">
         {{ partial "posts-grid.html" . }}
-      </div>
-      <div class="col-3">
-        {{ partial "sidebar.html" . }}
-      </div>
-    </div>
   </div>
 </section>
-{{/*  <section class="pt-4">
+<section class="pt-4">
   <div class="container">
-    {{ partial "posts-tabs.html" (dict "menuID" "main1" "page" .) }}
+    {{ partial "posts-tabs.html" (dict "categories" (slice "syntax" "test") "pages" .) }}
   </div>
-</section>  */}}
+</section>
 {{ end }}

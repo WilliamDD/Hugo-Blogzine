@@ -1,196 +1,121 @@
+{{- $page := .pages }}
+{{- $categories := .categories }}
+
 {{ $firstTab := "active" }}
 {{ $firstAria := "true" }}
-<div class="card">
-    <div class="card-header p-0 border-bottom-0 bg-white">
-        <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
-            {{- range $taxonomy := .Site.Taxonomies.categories -}} 
+
+{{ $firstTab2 := "active" }}
+{{ $firstAria2 := "true" }}
+
+<div class="card border-0 shadow">
+    <div class="card-header p-0 border-bottom-0 bg-gray">
+        <ul class="nav nav-tabs" id="ex1" role="tablist">
+            {{- range $categories -}} 
             <li class="nav-item" role="presentation">
-                <a class="nav-link {{ $firstTab }} border-start-0" id="tab-{{ .Title }}" data-bs-toggle="tab" href="#tabs-{{ .Title }}"
-                    role="tab" aria-controls="tabs-{{ .Title }}" aria-selected="{{ $firstAria }}">{{ $taxonomy.Name }}</a>
+                <a class="nav-link {{ $firstTab }}" id="tab-{{ . }}" data-bs-toggle="tab" href="#tabs-{{ . }}"
+                    role="tab" aria-controls="tabs-{{ . }}" aria-selected="{{ $firstAria }}">{{ . }}</a>
             </li>
             {{ $firstTab = "" }}
-            {{ $firstTab = "false" }}
+            {{ $firstAria = "false" }}
             {{ end }}
         </ul>
     </div>
     <div class="card-body">
         <div class="tab-content" id="ex1-content">
-            <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+            {{- range $categorie :=  $categories -}} 
+            {{- $value := $page.Site.Taxonomies.categories.Get $categorie -}} 
+
+            {{ $page:= index $value 0 }}
+            {{ $page2:= index $value 1 }}
+            {{ $page3:= index $value 2 }}
+            {{ $page4:= index $value 3 }}
+            {{ $page5:= index $value 4 }}
+            <div class="tab-pane fade show {{ $firstTab2 }}" id="tabs-{{ $categorie }}" role="tabpanel" aria-labelledby="tabs-{{ $categorie }}">
                 <div class="row">
                     <div class="col-6">
-                        <div class="card">
-                            <img loading="lazy" src="/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
-                                class="card-img-top" alt="{{ .Title }}">
+                        <div class="card h-100 border-0 shadow-0">
+                            <img loading="lazy" src="{{ $page.RelPermalink }}{{ $page.Params.Image }}" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">Title</a></h6>
-                                <div class="small mt-1">January 2, 2006</div>
+                                <a href="{{ $page.RelPermalink }}" class="btn-link text-reset fw-bold"><h5 class="card-title">{{ $page.Title }}</h5></a>
+                                <p class="card-text mb-5">{{ $page.Summary }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6">
+                      <div class="col-6">
+                        {{ if $page2 }}
                         <div class="card mb-3">
                             <div class="row g-3">
                                 <div class="col-4">
                                     <img loading="lazy" class="rounded ratio ratio-4x3"
-                                        src="/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
-                                        alt="{{ .Title }}">
+                                    src="{{ $page2.RelPermalink }}{{ $page2.Params.Image }}"
+                                    alt="{{ $page2.Title }}">
                                 </div>
                                 <div class="col-8">
-                                    <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">Title</a></h6>
-                                    <div class="small mt-1">January 2, 2006</div>
+                                    <h6><a href="{{ $page2.Permalink }}" class="btn-link text-reset fw-bold">{{ $page2.Title }}</a></h6>
+                                    <p class="card-text">{{ $page2.Summary }}</p>
                                 </div>
                             </div>
                         </div>
+                        {{ else}}
+                        {{ partial "placeholder.html" }}
+                        {{end }}
+                        {{ if $page3 }}
                         <div class="card mb-3">
                             <div class="row g-3">
                                 <div class="col-4">
                                     <img loading="lazy" class="rounded ratio ratio-4x3"
-                                        src="/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
-                                        alt="{{ .Title }}">
+                                        src="{{ $page3.RelPermalink }}{{ $page3.Params.Image }}"
+                                        alt="{{ $page3.Title }}">
                                 </div>
                                 <div class="col-8">
-                                    <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">Title</a></h6>
-                                    <div class="small mt-1">January 2, 2006</div>
+                                    <h6><a href="{{ $page3.Permalink }}" class="btn-link text-reset fw-bold">{{ $page3.Title }}</a></h6>
+                                    <p class="card-text">{{ $page3.Summary }}</p>
                                 </div>
                             </div>
                         </div>
+                        {{ else}}
+                        {{ partial "placeholder.html" }}
+                        {{end }}
+                        {{ if $page4 }}
                         <div class="card mb-3">
                             <div class="row g-3">
                                 <div class="col-4">
                                     <img loading="lazy" class="rounded ratio ratio-4x3"
-                                        src="/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
-                                        alt="{{ .Title }}">
+                                        src="{{ $page4.RelPermalink }}{{ $page4.Params.Image }}"
+                                        alt="{{ $page4.Title }}">
                                 </div>
                                 <div class="col-8">
-                                    <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">Title</a></h6>
-                                    <div class="small mt-1">January 2, 2006</div>
+                                    <h6><a href="{{ $page4.Permalink }}" class="btn-link text-reset fw-bold">{{ $page4.Title }}</a></h6>
+                                    <p class="card-text">{{ $page4.Summary }}</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        {{ else}}
+                        {{ partial "placeholder.html" }}
+                        {{end }}
+                        {{ if $page5 }}
+                        <div class="card mb-3">
+                            <div class="row g-3">
+                                <div class="col-4">
+                                    <img loading="lazy" class="rounded ratio ratio-4x3"
+                                        src="{{ $page5.RelPermalink }}{{ $page5.Params.Image }}"
+                                        alt="{{ $page5.Title }}">
+                                </div>
+                                <div class="col-8">
+                                    <h6><a href="{{ $page5.Permalink }}" class="btn-link text-reset fw-bold">{{ $page5.Title }}</a></h6>
+                                    <p class="card-text">{{ $page5.Summary }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {{ else}}
+                        {{ partial "placeholder.html" }}
+                        {{end }}
+                    </div> 
                 </div>
             </div>
-            <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-                <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="card">
-                                <img loading="lazy" src="/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
-                                    class="card-img-top" alt="{{ .Title }}">
-                                <div class="card-body">
-                                    <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">Title</a></h6>
-                                    <div class="small mt-1">January 2, 2006</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="card mb-3">
-                                <div class="row g-3">
-                                    <div class="col-4">
-                                        <img loading="lazy" class="rounded ratio ratio-4x3"
-                                            src="/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
-                                            alt="{{ .Title }}">
-                                    </div>
-                                    <div class="col-8">
-                                        <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">Title</a>
-                                        </h6>
-                                        <div class="small mt-1">January 2, 2006</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mb-3">
-                                <div class="row g-3">
-                                    <div class="col-4">
-                                        <img loading="lazy" class="rounded ratio ratio-4x3"
-                                            src="/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
-                                            alt="{{ .Title }}">
-                                    </div>
-                                    <div class="col-8">
-                                        <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">Title</a>
-                                        </h6>
-                                        <div class="small mt-1">January 2, 2006</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mb-3">
-                                <div class="row g-3">
-                                    <div class="col-4">
-                                        <img loading="lazy" class="rounded ratio ratio-4x3"
-                                            src="/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
-                                            alt="{{ .Title }}">
-                                    </div>
-                                    <div class="col-8">
-                                        <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">Title</a>
-                                        </h6>
-                                        <div class="small mt-1">January 2, 2006</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-                <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="card">
-                                <img loading="lazy" src="/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
-                                    class="card-img-top" alt="{{ .Title }}">
-                                <div class="card-body">
-                                    <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">Title</a>
-                                    </h6>
-                                    <div class="small mt-1">January 2, 2006</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="card mb-3">
-                                <div class="row g-3">
-                                    <div class="col-4">
-                                        <img loading="lazy" class="rounded ratio ratio-4x3"
-                                            src="/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
-                                            alt="{{ .Title }}">
-                                    </div>
-                                    <div class="col-8">
-                                        <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">Title</a>
-                                        </h6>
-                                        <div class="small mt-1">January 2, 2006</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mb-3">
-                                <div class="row g-3">
-                                    <div class="col-4">
-                                        <img loading="lazy" class="rounded ratio ratio-4x3"
-                                            src="/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
-                                            alt="{{ .Title }}">
-                                    </div>
-                                    <div class="col-8">
-                                        <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">Title</a>
-                                        </h6>
-                                        <div class="small mt-1">January 2, 2006</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mb-3">
-                                <div class="row g-3">
-                                    <div class="col-4">
-                                        <img loading="lazy" class="rounded ratio ratio-4x3"
-                                            src="/posts/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg"
-                                            alt="{{ .Title }}">
-                                    </div>
-                                    <div class="col-8">
-                                        <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">Title</a>
-                                        </h6>
-                                        <div class="small mt-1">January 2, 2006</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {{ $firstTab2 = "" }}
+            {{ $firstAria2 = "false" }}
+            {{ end }}
         </div>
     </div>
 </div>

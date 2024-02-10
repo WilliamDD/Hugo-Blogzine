@@ -3,32 +3,10 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <div class="border p-4 text-center shadow-sm rounded-3">
-          <h1>{{ .Title }}</h1>
-          <nav class="d-flex justify-content-center" aria-label="breadcrumb">
-            <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
-              {{- range .Ancestors.Reverse }}
-              <li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-              {{- end }}
-              <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="pt-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-9">
         {{ $paginator := .Paginate (where .RegularPages "Type" "posts") }}
         {{ range $paginator.Pages }}
         {{ partial "summary.html" . }}
         {{ end }}
-      </div>
-      <div class="col-3">
-        {{ partial "sidebar.html" . }}
       </div>
     </div>
   </div>

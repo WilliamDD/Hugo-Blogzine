@@ -1,23 +1,25 @@
-<nav class="py-2" style="background-color: rgb(41, 65, 114);">
+<nav class="py-3" style="background-color: rgb(41, 65, 114);">
 	<div class="container d-flex flex-wrap">
-		<ul class="nav me-auto">
-			{{ partial "menu-horizontal.html" (dict "menuID" "main1" "page" .) }}
-		</ul>
-		<ul class="nav">
-			{{ partial "menu-horizontal.html" (dict "menuID" "main2" "page" .) }}
-		</ul>
-	</div>
-</nav>
-<header class="py-3 mb-4 border-bottom" style="background-color: rgb(60, 110, 180);">
-	<div class="container d-flex flex-wrap justify-content-center">
 		<a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-light text-decoration-none">
 			{{/*  <svg class="bi me-2" width="40" height="32">
 				<use xlink:href="#bootstrap"></use>
 			</svg>  */}}
 			<span class="fs-4">{{ .Site.Title }}</span>
 		</a>
+		<ul class="nav">
+			{{ partial "menu-horizontal.html" (dict "menuID" "main1" "page" .) }}
+		</ul>
 		<form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search" action="/search" method="get">
 			<input id="search-query" name="q" type="search" class="form-control" placeholder="Search..." aria-label="Search">
 		</form>
+	</div>
+</nav>
+<header class="py-2 mb-4 border-bottom" style="background-color: rgb(60, 110, 180);">
+	<div class="container d-flex flex-wrap justify-content-center">
+		<ul class="nav">
+			{{ range $key, $value := .Site.Taxonomies.categories }}
+				<li class="nav-item"><a class="nav-link text-light px-2" href='{{ $.Site.BaseURL}}/categories/{{ $key }}/'>{{ $key | humanize }}</a></li>
+			{{ end }}
+		</ul>
 	</div>
 </header>
