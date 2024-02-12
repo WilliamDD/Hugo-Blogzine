@@ -7,7 +7,7 @@
 {{ $firstIndicator := "active" }}
 {{ $firstCard := "active" }}
 {{ $ariaCurrentIndicator := "true" }}
-{{ $firstNotLayzLoaded := "" }}
+{{ $firstNotLayzLoaded := "eager" }}
 {{ $slideToIndicator := 0 }}
 <div id="carouselExampleCaptions" class="carousel slide shadow">
     <div class="carousel-indicators">
@@ -21,7 +21,7 @@
     <div class="carousel-inner">
         {{ range first 4 $p }}
         <div class="carousel-item {{ $firstCard }}">
-            <img {{ $firstNotLayzLoaded }} src="{{ .RelPermalink }}{{ .Params.Image }}" class="d-block w-100 rounded" alt="...">
+            <img loading="{{ $firstNotLayzLoaded }}" src="{{ .RelPermalink }}{{ .Params.Image }}" class="d-block w-100 rounded" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 {{ range .Params.categories }}
                     <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="badge text-bg-danger mb-2"><i
@@ -34,7 +34,7 @@
             </div>
         </div>
         {{ $firstCard = "" }}
-        {{ $firstNotLayzLoaded = "loading='lazy'" }}
+        {{ $firstNotLayzLoaded = "lazy" }}
         {{ end }}
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
