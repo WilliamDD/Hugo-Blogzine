@@ -1,14 +1,14 @@
 <div class="card mb-4 shadow-sm">
     <div class="row">
         <div class="col-md-5">
-            <img class="ratio ratio-4x3 rounded-0" src="{{ .RelPermalink }}{{ .Params.Image }}" alt="">
+            <img class="ratio rounded-0" style="--bs-aspect-ratio: 75%;" src="{{ .RelPermalink }}{{ .Params.Image }}" alt="">
         </div>
         <div class="col-md-7 mt-3 mt-md-0">
             {{ range .Params.categories }}
             <a href="{{ " /categories/" | relLangURL }}{{ . | urlize }}" class="badge bg-category bg-category-{{ . }} bg-opacity-15 text-category text-category-{{ . }} my-3"><i
                     class="fas fa-circle me-2 small fw-bold"></i>{{ . }} </a>
             {{ end }}
-            <h3 class="h5"><a href="{{ .RelPermalink }}" class="btn-link text-reset">{{ .Title }}</a></h3>
+            <h2 class="h5"><a href="{{ .RelPermalink }}" class="btn-link text-reset">{{ .Title }}</a></h2>
             <p>{{ .Summary }}</p>
             <!-- Card info -->
             <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">

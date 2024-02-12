@@ -12,7 +12,7 @@
         <ul class="nav nav-tabs" id="ex1" role="tablist">
             {{- range $categories -}} 
             <li class="nav-item" role="presentation">
-                <a class="nav-link {{ $firstTab }}" id="tab-{{ . }}" data-bs-toggle="tab" href="#tabs-{{ . }}"
+                <a class="nav-link {{ $firstTab }}" style="color:rgb(41, 65, 114);" id="tab-{{ . }}" data-bs-toggle="tab" href="#tabs-{{ . }}"
                     role="tab" aria-controls="tabs-{{ . }}" aria-selected="{{ $firstAria }}">{{ . }}</a>
             </li>
             {{ $firstTab = "" }}
@@ -34,9 +34,9 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="card h-100 border-0 shadow-0">
-                            <img loading="lazy" src="{{ $page.RelPermalink }}{{ $page.Params.Image }}" class="card-img-top" alt="...">
+                            <img loading="lazy" src="{{ $page.RelPermalink }}{{ $page.Params.Image }}" class="card-img-top ratio" style="--bs-aspect-ratio: 50%;" alt="...">
                             <div class="card-body">
-                                <a href="{{ $page.RelPermalink }}" class="btn-link text-reset fw-bold"><h5 class="card-title">{{ $page.Title }}</h5></a>
+                                <a href="{{ $page.RelPermalink }}" class="btn-link text-reset fw-bold"><h2 class="card-title">{{ $page.Title }}</h2></a>
                                 <p class="card-text mb-5">{{ $page.Summary }}</p>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                                     alt="{{ $page2.Title }}">
                                 </div>
                                 <div class="col-8">
-                                    <h6><a href="{{ $page2.Permalink }}" class="btn-link text-reset fw-bold">{{ $page2.Title }}</a></h6>
+                                    <h2><a href="{{ $page2.Permalink }}" class="btn-link text-reset fw-bold">{{ $page2.Title }}</a></h2>
                                     <p class="card-text">{{ $page2.Summary }}</p>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                         alt="{{ $page3.Title }}">
                                 </div>
                                 <div class="col-8">
-                                    <h6><a href="{{ $page3.Permalink }}" class="btn-link text-reset fw-bold">{{ $page3.Title }}</a></h6>
+                                    <h2><a href="{{ $page3.Permalink }}" class="btn-link text-reset fw-bold">{{ $page3.Title }}</a></h2>
                                     <p class="card-text">{{ $page3.Summary }}</p>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                                         alt="{{ $page4.Title }}">
                                 </div>
                                 <div class="col-8">
-                                    <h6><a href="{{ $page4.Permalink }}" class="btn-link text-reset fw-bold">{{ $page4.Title }}</a></h6>
+                                    <h2><a href="{{ $page4.Permalink }}" class="btn-link text-reset fw-bold">{{ $page4.Title }}</a></h2>
                                     <p class="card-text">{{ $page4.Summary }}</p>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
                                         alt="{{ $page5.Title }}">
                                 </div>
                                 <div class="col-8">
-                                    <h6><a href="{{ $page5.Permalink }}" class="btn-link text-reset fw-bold">{{ $page5.Title }}</a></h6>
+                                    <h2><a href="{{ $page5.Permalink }}" class="btn-link text-reset fw-bold">{{ $page5.Title }}</a></h2>
                                     <p class="card-text">{{ $page5.Summary }}</p>
                                 </div>
                             </div>

@@ -16,21 +16,21 @@
       </div>
 
       <div class="col mb-3">
-        <h5>Section</h5>
+        <h3>Section</h3>
         <ul class="nav flex-column">
           {{ partial "menu-vertical.html" (dict "menuID" "footer1" "page" .) }}
         </ul>
       </div>
 
       <div class="col mb-3">
-        <h5>Section</h5>
+        <h3>Section</h3>
         <ul class="nav flex-column">
           {{ partial "menu-vertical.html" (dict "menuID" "footer2" "page" .) }}
         </ul>
       </div>
 
       <div class="col mb-3">
-        <h5>Tags</h5>
+        <h3>Tags</h3>
         <div class="justify-content-between">
             {{ range $key, $value := .Site.Taxonomies.tags }}
               <span class="badge text-bg-secondary">{{ $key | humanize }}</span>
@@ -43,9 +43,9 @@
         <span class="mb-3 mb-md-0">{{ .Site.Copyright }}</span>
       </div>
       <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-        <li class="ms-3"><a class="text-light" href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-        <li class="ms-3"><a class="text-light" href="#"><i class="fa-brands fa-instagram"></i></a></li>
-        <li class="ms-3"><a class="text-light" href="#"><i class="fa-brands fa-facebook"></i></a></li>
+        <li class="ms-3"><a class="text-light" href="#"><i class="fa-brands fa-x-twitter"></i><span class="sr-only">Twitter</span></a></li>
+        <li class="ms-3"><a class="text-light" href="#"><i class="fa-brands fa-instagram"></i><span class="sr-only">Instagram</span></a></li>
+        <li class="ms-3"><a class="text-light" href="#"><i class="fa-brands fa-facebook"></i><span class="sr-only">Facebook</span></a></li>
       </ul>
     </div>
   </div>

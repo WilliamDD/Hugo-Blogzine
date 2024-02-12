@@ -26,9 +26,9 @@
                     <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="badge text-bg-danger mb-2"><i
                     class="fas fa-circle me-2 small fw-bold"></i>{{ . }} </a>
                 {{ end }}
-                <h5>
+                <h2>
                 <a href="{{ .RelPermalink }}" class="btn-link text-reset fw-bold" style="text-shadow: 1px 1px 2px black;">{{ .Title }}</a>
-                </h5>
+                </h2>
                 <p style="text-shadow: 1px 1px 2px black;">{{ .Summary }}</p>
             </div>
         </div>
