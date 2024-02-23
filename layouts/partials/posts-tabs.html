@@ -1,6 +1,6 @@
 {{- $page := .pages }}
 {{- $categories := .categories }}
-
+{{- $name := .name }}
 {{ $firstTab := "active" }}
 {{ $firstAria := "true" }}
 
@@ -10,6 +10,7 @@
 <div class="card border-0 shadow">
     <div class="card-header p-0 border-bottom-0 bg-gray">
         <ul class="nav nav-tabs" id="ex1" role="tablist">
+            <li class="m-2"><p class="m-0 fw-bold">{{ $name }}</p></li>
             {{- range $categories -}} 
             <li class="nav-item" role="presentation">
                 <a class="nav-link {{ $firstTab }}" style="color:rgb(41, 65, 114);" id="tab-{{ . }}" data-bs-toggle="tab" href="#tabs-{{ . }}"

@@ -9,12 +9,14 @@
 </section>
 <section class="pt-4">
   <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
         {{ partial "posts-grid.html" . }}
-  </div>
-</section>
-<section class="pt-4">
-  <div class="container">
-    {{ partial "posts-tabs.html" (dict "categories" (slice "syntax" "test") "pages" .) }}
+      </div>
+      <div class="col-lg-3">
+        {{ partial "sidebar.html" . }}
+      </div>
+    </div>
   </div>
 </section>
 {{ end }}

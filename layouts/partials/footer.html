@@ -9,44 +9,44 @@
           {{ .Site.Title }}
         </a>
         <p class="text-white">{{ .Site.Params.Description }}</p>
+        {{ .Site.Copyright }}
       </div>
 
       <div class="col mb-3">
-
-      </div>
-
-      <div class="col mb-3">
-        <h3>Section</h3>
+        {{- if index site.Menus "footer1" }}
+        <h3 class="h5">Section</h3>
         <ul class="nav flex-column">
           {{ partial "menu-vertical.html" (dict "menuID" "footer1" "page" .) }}
         </ul>
+        {{ end }}
       </div>
 
       <div class="col mb-3">
-        <h3>Section</h3>
+        {{- if index site.Menus "footer2" }}
+        <h3 class="h5">Section</h3>
         <ul class="nav flex-column">
           {{ partial "menu-vertical.html" (dict "menuID" "footer2" "page" .) }}
+        </ul>
+        {{ end }}
+      </div>
+
+      <div class="col mb-3">
+        <h3 class="h5">Social</h3>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"> <a class="nav-link p-0 text-light" href=""><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
+          <li class="nav-item mb-2"> <a class="nav-link p-0 text-light" href=""><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+          <li class="nav-item mb-2"> <a class="nav-link p-0 text-light" href=""><i class="fa-brands fa-facebook"></i> Facebook</a></li>
         </ul>
       </div>
 
       <div class="col mb-3">
-        <h3>Tags</h3>
+        <h3 class="h5">All Tags</h3>
         <div class="justify-content-between">
             {{ range $key, $value := .Site.Taxonomies.tags }}
               <span class="badge text-bg-secondary">{{ $key | humanize }}</span>
             {{ end }}
         </div>
       </div>
-    </div>
-    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
-      <div class="col-md-4 d-flex align-items-center">
-        <span class="mb-3 mb-md-0">{{ .Site.Copyright }}</span>
-      </div>
-      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-        <li class="ms-3"><a class="text-light" href="#"><i class="fa-brands fa-x-twitter"></i><span class="sr-only">Twitter</span></a></li>
-        <li class="ms-3"><a class="text-light" href="#"><i class="fa-brands fa-instagram"></i><span class="sr-only">Instagram</span></a></li>
-        <li class="ms-3"><a class="text-light" href="#"><i class="fa-brands fa-facebook"></i><span class="sr-only">Facebook</span></a></li>
-      </ul>
     </div>
   </div>
 </footer>

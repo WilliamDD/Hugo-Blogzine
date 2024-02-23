@@ -1,0 +1,19 @@
+{{ if .Site.RegularPages.Related . }}
+<div class="widget">
+    <h3 class="h5 widget-title">Related articles</h3>
+    <!-- post-item -->
+    {{ range .Site.RegularPages.Related . | first 5 }}
+    <div class="card mb-3 border-0 shadow-0">
+        <div class="row g-3">
+            <div class="col-4">
+                <img class="rounded ratio ratio-4x3" src="{{ .RelPermalink }}{{ .Params.Image }}" alt="{{ .Title }}">
+            </div>
+            <div class="col-8">
+                <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">{{ .Title }}</a></h6>
+                <div class="small mt-1">{{ .PublishDate.Format "January 2, 2006" }}</div>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+</div>
+{{ end }}

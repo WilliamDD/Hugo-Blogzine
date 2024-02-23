@@ -1,12 +1,31 @@
 {{ define "main" }}
 <section class="pt-4">
+	<div class="container">
+		<div class="row">
+      <div class="col-12">
+				<div class="bg-white border p-4 text-center rounded-3">
+					<h1 class="h3">Latest articles in {{ .Title }}</h1>
+					<nav class="d-flex justify-content-center" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              {{- range .Ancestors.Reverse }}
+                  <li class="breadcrumb-item"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+              {{- end }}
+              <li class="breadcrumb-item active">{{ .Title }}</li>
+            </ol>
+          </nav>
+				</div>
+      </div>
+    </div>
+	</div>
+</section>
+<section class="pt-4">
   <div class="container">
     <div class="row">
-      <div class="col-12">
-        {{ $paginator := .Paginate (where .RegularPages "Type" "posts") }}
-        {{ range $paginator.Pages }}
-        {{ partial "summary.html" . }}
-        {{ end }}
+      <div class="col-lg-9">
+        {{ partial "posts-list.html" . }}
+      </div>
+      <div class="col-lg-3">
+        {{ partial "sidebar.html" . }}
       </div>
     </div>
   </div>
