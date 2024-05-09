@@ -2,7 +2,7 @@
     <p class="menu-label has-text-white is-size-6 has-text-weight-bold">Featured tags</p>
     <ul class="menu-list">
         {{ range first 5 .Site.Taxonomies.tags.ByCount }}
-        <li><a class="has-background-none has-text-grey-light px-0 py-3"
+        <li><a class="has-background-none has-text-grey-light px-0 py-2"
                 href="{{ $.Site.BaseURL}}/tags/{{ (replace .Name " #" "%23" ) | urlize }}/">{{ .Name }} <span
                     class="tag is-pulled-right">{{ .Count }}</span></a></li>
         {{ end }}
