@@ -83,3 +83,8 @@
     margin-top: 0;
     color: #abb1bf!important;
   }
+
+  .content a::after{
+    content: "🔗";
+    color:rgb(41, 66, 255);
+  }
