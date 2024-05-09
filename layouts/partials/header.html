@@ -47,7 +47,7 @@
 					</a>
 					<div class="navbar-dropdown">
 						{{ range $key, $value := .Site.Taxonomies.categories }}
-						<a class="navbar-item" href="{{ $.Site.BaseURL}}/categories/{{ (replace $key " #" "%23" ) |
+						<a class="navbar-item" href="/categories/{{ (replace $key " #" "%23" ) |
 							urlize }}/">{{ $key }} </a>
 						{{ end }}
 					</div>
@@ -58,7 +58,7 @@
 					</a>
 					<div class="navbar-dropdown">
 						{{ range $key, $value := .Site.Taxonomies.tags }}
-						<a class="navbar-item" href="{{ $.Site.BaseURL}}/tags/{{ (replace $key " #" "%23" ) | urlize
+						<a class="navbar-item" href="/tags/{{ (replace $key " #" "%23" ) | urlize
 							}}/">{{ $key }} </a>
 						{{ end }}
 					</div>
