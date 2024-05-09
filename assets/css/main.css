@@ -66,6 +66,8 @@
 
   #TableOfContents a {
       color: #abb1bf!important;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
   }
   #TableOfContents ul,
   #TableOfContents ol {
@@ -73,11 +75,13 @@
     color: #abb1bf!important;
   }
   #TableOfContents ol {
-    margin-top: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     color: #abb1bf!important;
   }
   #TableOfContents li+li {
-    margin-top: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     color: #abb1bf!important;
   }
 
