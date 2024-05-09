@@ -1,11 +1,9 @@
-<footer class="bg-dark mb-0 text-light">
+{{/* <footer class="bg-dark mb-0 text-light">
   <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 mt-5">
       <div class="col mb-3">
         <a href="/" class="d-flex align-items-center mb-3 text-light text-decoration-none">
-          {{/*  <svg class="bi me-2" width="40" height="32">
-            <use xlink:href="#bootstrap"></use>
-          </svg>  */}}
+
           {{ .Site.Title }}
         </a>
         <p class="text-white">{{ .Site.Params.Description }}</p>
@@ -33,20 +31,34 @@
       <div class="col mb-3">
         <h3 class="h5">Social</h3>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"> <a class="nav-link p-0 text-light" href=""><i class="fa-brands fa-x-twitter"></i> Twitter</a></li>
-          <li class="nav-item mb-2"> <a class="nav-link p-0 text-light" href=""><i class="fa-brands fa-instagram"></i> Instagram</a></li>
-          <li class="nav-item mb-2"> <a class="nav-link p-0 text-light" href=""><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+          <li class="nav-item mb-2"> <a class="nav-link p-0 text-light" href=""><i class="fa-brands fa-x-twitter"></i>
+              Twitter</a></li>
+          <li class="nav-item mb-2"> <a class="nav-link p-0 text-light" href=""><i class="fa-brands fa-instagram"></i>
+              Instagram</a></li>
+          <li class="nav-item mb-2"> <a class="nav-link p-0 text-light" href=""><i class="fa-brands fa-facebook"></i>
+              Facebook</a></li>
         </ul>
       </div>
 
       <div class="col mb-3">
         <h3 class="h5">All Tags</h3>
         <div class="justify-content-between">
-            {{ range $key, $value := .Site.Taxonomies.tags }}
-              <span class="badge text-bg-secondary">{{ $key | humanize }}</span>
-            {{ end }}
+          {{ range $key, $value := .Site.Taxonomies.tags }}
+          <span class="badge text-bg-secondary">{{ $key | humanize }}</span>
+          {{ end }}
         </div>
       </div>
+    </div>
+  </div>
+</footer> */}}
+
+<footer class="footer has-background-black">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p class="has-text-light">
+        <strong class="has-text-light">{{ .Site.Title }}</strong> by {{ .Site.Params.Author.Name }}.
+      </p>
+      <p class="has-text-light">{{.Site.Copyright }}</p>
     </div>
   </div>
 </footer>

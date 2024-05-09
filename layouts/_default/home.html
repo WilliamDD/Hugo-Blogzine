@@ -2,21 +2,39 @@
 
 {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
 {{ $dateHuman := .Date | time.Format ":date_long" }}
-<section class="pt-4">
-  <div class="container">
-    {{ partial "posts-carousel.html" (dict "tags" (slice "featured") "pages" .Site.RegularPages) }}
-  </div>
-</section>
-<section class="pt-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9">
-        {{ partial "posts-grid.html" . }}
-      </div>
-      <div class="col-lg-3">
-        {{ partial "sidebar.html" . }}
-      </div>
-    </div>
-  </div>
-</section>
+
+{{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+          {{ range $paginator.Pages }}
+          <div class="card my-5 mr-3">
+            <div class="card-image">
+              <figure class="image is-16by9">
+                <img src="{{ .RelPermalink }}{{ .Params.Image }}" alt="Placeholder image" />
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <p class="subtitle is-6 tags mb-3">
+                  {{ range .Params.categories }}
+                  <a class="tag is-link is-small" href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">
+                    {{ . }}
+                  </a>
+                  {{ end }}
+    
+                  </p>
+                  <a href="{{ .RelPermalink }}" class="title is-4">{{ .Title }}</a>
+                </div>
+              </div>
+              <div class="content">
+                {{ .Content }}
+              </div>
+            </div>
+            <footer class="card-footer">
+              <p class="card-footer-item mx-3 has-justified-content-start has-text-weight-semibold is-uppercase	is-size-7"> {{ .Site.Params.Author.Name }} /&nbsp;<time class="published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>&nbsp;/ {{ .ReadingTime }} Minutes </p>
+            </footer>
+          </div>
+          {{ end }}
+
+
+
 {{ end }}

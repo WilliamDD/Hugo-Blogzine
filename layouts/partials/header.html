@@ -1,16 +1,14 @@
-<nav class="py-3" style="background-color: rgb(41, 65, 114);">
+{{/* <nav class="py-3" style="background-color: rgb(41, 65, 114);">
 	<div class="container d-flex flex-wrap">
 		<a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-light text-decoration-none">
-			{{/*  <svg class="bi me-2" width="40" height="32">
-				<use xlink:href="#bootstrap"></use>
-			</svg>  */}}
 			<h1 class="fs-4">{{ .Site.Title }}</h1>
 		</a>
 		<ul class="nav">
 			{{ partial "menu-horizontal.html" (dict "menuID" "main1" "page" .) }}
 		</ul>
 		<form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search" action="/search" method="get">
-			<input id="search-query" name="q" type="search" class="form-control" placeholder="Search..." aria-label="Search">
+			<input id="search-query" name="q" type="search" class="form-control" placeholder="Search..."
+				aria-label="Search">
 		</form>
 	</div>
 </nav>
@@ -18,8 +16,54 @@
 	<div class="container d-flex flex-wrap justify-content-center">
 		<ul class="nav">
 			{{ range $key, $value := .Site.Taxonomies.categories }}
-				<li class="nav-item"><a class="nav-link text-light px-2" href='{{ $.Site.BaseURL}}/categories/{{ $key }}/'>{{ $key | humanize }}</a></li>
+			<li class="nav-item"><a class="nav-link text-light px-2"
+					href='{{ $.Site.BaseURL}}/categories/{{ $key }}/'>{{ $key | humanize }}</a></li>
 			{{ end }}
 		</ul>
 	</div>
-</header>
+</header> */}}
+
+<nav class="navbar" role="navigation" aria-label="dropdown navigation">
+	<div class="container my-5">
+		<div class="navbar-brand">
+			<a href="{{ $.Site.BaseURL }}" class="navbar-item py-0">
+				<img src="{{ .Site.Params.Logo }}" alt="Logo {{ .Site.Title }}">
+				<h1 class="has-text-weight-bold">{{ .Site.Title }}</h1>
+			</a>
+
+			<a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+			</a>
+		</div>
+		<div class="navbar-menu" id="navMenu">
+			<div class="navbar-end">
+				{{ partial "menu-horizontal.html" . }}
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link">
+						All categories
+					</a>
+					<div class="navbar-dropdown">
+						{{ range $key, $value := .Site.Taxonomies.categories }}
+						<a class="navbar-item" href="{{ $.Site.BaseURL}}/categories/{{ (replace $key " #" "%23" ) |
+							urlize }}/">{{ $key }} </a>
+						{{ end }}
+					</div>
+				</div>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link">
+						All tags
+					</a>
+					<div class="navbar-dropdown">
+						{{ range $key, $value := .Site.Taxonomies.tags }}
+						<a class="navbar-item" href="{{ $.Site.BaseURL}}/tags/{{ (replace $key " #" "%23" ) | urlize
+							}}/">{{ $key }} </a>
+						{{ end }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>

@@ -1,41 +1,18 @@
-{{- /*
-    Renders a menu for the given menu ID.
-    
-    @context {page} page The current page.
-    @context {string} menuID The menu ID.
-    
-    @example: {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-    */}}
-    
-    {{- $page := .page }}
-    {{- $menuID := .menuID }}
-    
-    {{- with index site.Menus $menuID }}
-      {{- partial "inline/menu/walk-h.html" (dict "page" $page "menuEntries" .) }}
-    {{- end }}
-    
-    {{- define "partials/inline/menu/walk-h.html" }}
-      {{- $page := .page }}
-      {{- range .menuEntries }}
-        {{- $attrs := dict "href" .URL }}
-        {{- if $page.IsMenuCurrent .Menu . }}
-          {{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
-        {{- else if $page.HasMenuCurrent .Menu .}}
-          {{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
-        {{- end }}
-        <li class="nav-item">
-          <a class="nav-link text-white px-2"
-            {{- range $k, $v := $attrs }}
-              {{- with $v }}
-                {{- printf " %s=%q" $k $v | safeHTMLAttr }}
-              {{- end }}
-            {{- end -}}
-          >{{ or (T .Identifier) .Name | safeHTML }}</a>
-          {{- with .Children }}
-            <ul>
-              {{- partial "inline/menu/walk-h.html" (dict "page" $page "menuEntries" .) }}
-            </ul>
-          {{- end }}
-        </li>
-      {{- end }}
-    {{- end }}
+{{ with site.Menus.main }}
+    {{ range . }}
+      {{ if $.IsMenuCurrent .Menu . }}
+        <a class="navbar-item is-active" aria-current="page" href="{{ .URL }}">{{ .Name }}</a>
+      {{ else if $.HasMenuCurrent .Menu . }}
+        {{/*  <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            {{ .Name }}
+          </a>
+          <div class="navbar-dropdown">
+            
+          </div>
+        </div>  */}}
+      {{ else }}
+        <a class="navbar-item" href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    {{ end }}
+{{ end }}

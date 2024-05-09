@@ -1,6 +1,10 @@
 {{ if gt .WordCount 400 }}
-<div class="mb-3">
-    <h3 class="h5"><span class="text-capitalize">Table of contents</span></h3>
+<aside class="menu my-5 mx-3">
+<p class="menu-label has-text-white is-size-6 has-text-weight-bold">Table of contents</p>
+<div class="content">
     {{ .TableOfContents }}
 </div>
+</aside>
+
+
 {{ end }}

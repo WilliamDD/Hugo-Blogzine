@@ -2,48 +2,37 @@
 
 {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
 {{ $dateHuman := .Date | time.Format ":date_long" }}
-<section class="pt-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="mb-4 shadow border-0 p-5 text-center rounded-3"
-          style="background-image: url('{{ .RelPermalink }}{{ .Params.Image }}');background-size:cover;background-position:center;">
-          <div class="my-5">
-            {{ range .Params.categories }}
-            <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="badge text-bg-primary mb-2"><i
-                class="fas fa-circle me-2 small fw-bold"></i>{{ . }} </a>
-            {{ end }}
-            <h2 class="text-white h1" style="text-shadow: 1px 1px 2px black;">{{ .Title }}</h2>
-            <nav class="d-flex justify-content-center" aria-label="breadcrumb">
-              <ul class="list-group list-group-horizontal border-0">
-                <li class="list-group-item bg-transparent border-0 text-white"style="text-shadow: 1px 1px 2px black;">by&nbsp;{{ .Site.Params.Author }}</li>
-                <li class="list-group-item bg-transparent border-0 text-white"style="text-shadow: 1px 1px 2px black;">{{ .PublishDate.Format "January 2, 2006" }}</li>
-                <li class="list-group-item bg-transparent border-0 text-white"style="text-shadow: 1px 1px 2px black;">{{ .ReadingTime }} minute read</li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+
+<div class="card my-5 mx-3">
+  <div class="card-image">
+    <figure class="image is-16by9">
+      <img src="{{ .RelPermalink }}{{ .Params.Image }}" alt="Placeholder image" />
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="subtitle is-6 tags mb-3">
+        {{ range .Params.categories }}
+        <a class="tag is-link is-small" href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">
+          {{ . }}
+        </a>
+        {{ end }}
+
+        </p>
+        <a href="{{ .RelPermalink }}" class="title is-4">{{ .Title }}</a>
       </div>
     </div>
-  </div>
-</section>
-<section class="pt-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9">
-        <div class="card p-4 mb-4 border-0 shadow-0">
-          {{ .Content 
-            | replaceRE "<table>" "<div class='table-responsive shadow mb-5'><table class='table table-bordered m-0'>"
-            | replaceRE "</table>" "</table></div>"
-            | replaceRE "<p>" "<p class='mb-4'>"
-            | replaceRE "<img" "<img class='rounded shadow img-fluid mx-auto d-block'" | safeHTML  }}
-        </div>
-          {{ partial "disqus.html" . }}
-      </div>
-      <div class="col-lg-3">
-        {{ partial "sidebar.html" . }}
-      </div>
+    <div class="content">
+      {{ .Content }}
     </div>
   </div>
-</section>
+  <footer class="card-footer">
+    <p class="card-footer-item mx-3 has-justified-content-start has-text-weight-semibold is-uppercase	is-size-7"> {{ .Site.Params.Author.Name }} /&nbsp;<time class="published" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>&nbsp;/ {{ .ReadingTime }} Minutes </p>
+  </footer>
+</div>
+
+
+  {{ partial "disqus.html" . }}
+
 {{ end }}

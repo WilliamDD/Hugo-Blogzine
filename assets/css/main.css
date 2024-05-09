@@ -1,50 +1,85 @@
-body {
-    font-family: 'rubik', sans-serif;
-    font-size: 14px;
-}
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css";
 
-.carousel-item img {
-    object-fit: cover;
-    object-position: center;
-    height: 500px;
-    overflow: hidden;
+  body {
+    overflow: hidden; /* prevent scrollbar */
+    background: #FEFEFE;
   }
 
-.btn-link {
-    display: inline-block;
+  .container {
+    margin-top: 1em;
     position: relative;
-    color: #0087ca;
-    text-decoration: none;
-}
-
-.btn-link::after {
+    overflow: visible;
+  }
+  
+  .extra:before{
+    content: '';
+    display: block; /* override bootstrap */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 100%;
+    transform:translate(-50%, 0);
+    background-size: 50%;
+    background-position: center;
+  }
+  
+  [class*="column"]{
+    min-height:320px;
+    position: relative;
+  }
+  
+  .left:before {
     content: '';
     position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    right: 0;
+    background: #FEFEFE;
+  
+  }
+  
+  .right{
+    position: relative;
+    background-color: #4D5D6D;
+    z-index: 1;
+  }
+  .right:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+    top: 0;
     left: 0;
-    background-color: #0087ca;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
+    background: #4D5D6D;
+    z-index: -1;
+  }
 
-.btn-link:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
+  .has-justified-content-start {
+    justify-content: start;
+  }
 
-.bg-category {
-    --bs-bg-opacity: 1;
-    background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
-}
+  .has-background-none {
+    background-color: initial !important;
+  }
 
-.text-category {
-    --bs-text-opacity: 1;
-    color: rgba(var(--bs-primary-rgb),var(--bs-text-opacity))!important;
-}
+  #TableOfContents * {
+  }
 
-.bg-opacity-15 {
-    --bs-bg-opacity: 0.15;
-}
+  #TableOfContents a {
+      color: #abb1bf!important;
+  }
+  #TableOfContents ul,
+  #TableOfContents ol {
+    margin-left: 1rem;
+    color: #abb1bf!important;
+  }
+  #TableOfContents ol {
+    margin-top: 0;
+    color: #abb1bf!important;
+  }
+  #TableOfContents li+li {
+    margin-top: 0;
+    color: #abb1bf!important;
+  }

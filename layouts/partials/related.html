@@ -1,19 +1,22 @@
 {{ if .Site.RegularPages.Related . }}
-<div class="widget">
-    <h3 class="h5 widget-title">Related articles</h3>
-    <!-- post-item -->
+<aside class="menu my-5 mx-3">
+<p class="menu-label has-text-white is-size-6 has-text-weight-bold">Related articles</p>
+<!-- post-item -->
     {{ range .Site.RegularPages.Related . | first 5 }}
-    <div class="card mb-3 border-0 shadow-0">
-        <div class="row g-3">
-            <div class="col-4">
-                <img class="rounded ratio ratio-4x3" src="{{ .RelPermalink }}{{ .Params.Image }}" alt="{{ .Title }}">
-            </div>
-            <div class="col-8">
-                <h6><a href="{{ .Permalink }}" class="btn-link text-reset fw-bold">{{ .Title }}</a></h6>
-                <div class="small mt-1">{{ .PublishDate.Format "January 2, 2006" }}</div>
-            </div>
+    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := .Date | time.Format ":date_long" }}
+
+    <article class="media my-3">
+        <figure class="media-left">
+            <p class="image is-64x64">
+                <img src="{{ .RelPermalink }}{{ .Params.Image }}" />
+            </p>
+        </figure>
+        <div class="media-content">
+            <a href="{{ .RelPermalink }}" class="title is-6 has-text-light">{{ .Title }}</a>
+            <p class="subtitle is-6 tags has-text-grey-light"><time class="published" datetime="{{ $dateMachine }}"> {{ $dateHuman }} </time></p>
         </div>
-    </div>
+    </article>
     {{ end }}
-</div>
+</aside>
 {{ end }}
