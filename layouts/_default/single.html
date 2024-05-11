@@ -24,7 +24,10 @@
       </div>
     </div>
     <div class="content">
-      {{ .Content }}
+      {{ .Content | 
+        replaceRE "<table>" "<div class='table-container'><table class='table'>" |
+        replaceRE "</table>" "</table></div>" | safeHTML
+      }}
     </div>
   </div>
   <footer class="card-footer">

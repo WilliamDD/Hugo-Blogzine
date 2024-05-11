@@ -1,12 +1,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+<title>{{ if .IsHome }}{{ upper site.Title }}{{ else }} {{ upper ( printf "%s | %s"  .Title site.Title ) }}{{ end }}</title>
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
 
 {{ if .IsHome }}
 <meta name="description" content="{{ .Site.Params.Description }}">
-<meta name="author" content="{{ .Site.Params.Author }}">
+<meta name="author" content="{{ .Site.Params.Author.Name }}">
 <meta property="og:title" content="{{ .Site.Title }}">
 <meta property="og:url" content="{{ .Page.Permalink }}">
 <meta property="og:description" content="{{ .Site.Params.Description }}">
@@ -19,7 +19,7 @@
 
 {{ else }}
 <meta name="description" content="{{ .Page.Summary }}">
-<meta name="author" content="{{ .Site.Params.Author }}">
+<meta name="author" content="{{ .Site.Params.Author.Name }}">
 <meta property="og:title" content="{{ .Page.Title }}.">
 <meta property="og:url" content="{{ .Page.Permalink }}">
 <meta property="og:description" content="{{ .Page.Summary }}">

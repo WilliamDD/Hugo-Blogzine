@@ -5,12 +5,20 @@
     background: #FEFEFE;
   }
 
+  body.has-navbar-fixed-top, html.has-navbar-fixed-top {
+    padding-top: 100px;
+  }
+
   .container {
     margin-top: 1em;
     position: relative;
     overflow: visible;
   }
   
+  .extra {
+    background: #FEFEFE;
+  }
+
   .extra:before{
     content: '';
     display: block; /* override bootstrap */

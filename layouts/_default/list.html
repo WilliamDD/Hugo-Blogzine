@@ -26,7 +26,15 @@
                 </div>
               </div>
               <div class="content">
-                {{ .Content }}
+                {{ if eq .Site.Params.ShowFullPost true }}
+                {{ .Content | 
+                  replaceRE "<table>" "<div class='table-container'><table class='table'>" |
+                  replaceRE "</table>" "</table></div>" | safeHTML }}
+                {{ else }}
+                <p>{{ .Summary | 
+                  replaceRE "<table>" "<div class='table-container'><table class='table'>" |
+                  replaceRE "</table>" "</table></div>" | safeHTML }}</p>
+                {{ end }}
               </div>
             </div>
             <footer class="card-footer">
