@@ -1,6 +1,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ if .IsHome }}{{ upper site.Title }}{{ else }} {{ upper ( printf "%s | %s"  .Title site.Title ) }}{{ end }}</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
 
